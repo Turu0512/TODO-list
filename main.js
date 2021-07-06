@@ -3,7 +3,8 @@ new Vue({
   data: {
     default: '2018-10-04',
     DatePickerFormat:'yyyy-MM-dd',
-    ja: vdp_translation_ja.js
+    ja: vdp_translation_ja.js,
+    fullMonthName:'true',
   },
   components: {
     'vuejs-datepicker':vuejsDatepicker
