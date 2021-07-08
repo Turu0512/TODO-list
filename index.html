@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in todos" v-bind:key="item.id">
+          <tr v-for="item in computedTodos" v-bind:key="item.id">
             <th>{{item.id}}</th>
             <td>{{item.comment}}</td>
             <td class="state">
@@ -37,6 +37,7 @@
           </tr>
         </tbody>
       </table>
+      <p>{{ computedTodos.length }} 件を表示中</p>
       <!-- 新規登録フォーム -->
       <h2>新しい作業の追加</h2>
       <form class="add-form" v-on:submit.prevent="doAdd">

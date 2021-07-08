@@ -73,5 +73,15 @@ const app = new Vue({
   },
   created(){
     this.todos = todoStorage.fetch()
+  },
+  computed:{
+    computedTodos:function(){
+            // データ current が -1 ならすべて
+      // それ以外なら current と state が一致するものだけに絞り込む
+
+      return this.todos.filter(function(el){
+        return this.current<0 ? true:this.current === el.state
+      },this)
+    }
   }
 })
