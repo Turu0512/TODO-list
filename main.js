@@ -1,12 +1,27 @@
-new Vue({
-  el: '#app',
-  data: {
-    default: '2018-10-04',
-    DatePickerFormat:'yyyy-MM-dd',
-    ja: vdp_translation_ja.js,
-    fullMonthName:'true',
+var STORAGE_KEY = 'todos-vuejs-demo'
+var todoStorage = {
+  fetch: function() {
+    var todos = JSON.parse(
+      localStorage.getItem(STORAGE_KEY) || '[]'
+    )
+    todos.forEach(function(todo, index) {
+      todo.id = index
+    })
+    todoStorage.uid = todos.length
+    return todos
   },
-  components: {
-    'vuejs-datepicker':vuejsDatepicker
+  save: function(todos) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }
-});
+}
+// ↑　ローカルストレージの式
+
+const app = new Vue({
+  el:'#app',
+  data: {
+  todos:[],
+  },
+  methods: {
+
+  }
+})
