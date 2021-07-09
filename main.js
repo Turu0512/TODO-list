@@ -87,7 +87,7 @@ new Vue({
     },
     // 状態変更の処理
     doChangeState: function(item){
-      item.state = !item.state ? 0:1
+      item.state = !item.state ? 1:0
     },
     // 削除の処理
     doRemove: function(item){
