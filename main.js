@@ -50,7 +50,7 @@ doAdd: function(event,value){
 new Vue({
   el:'#app',
   data: {
-    
+    todos:[],
     current:-1,
     options:[
     { value:-1, label:'すべて'}, 
