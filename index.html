@@ -23,7 +23,7 @@
         <thead v-pre>
           <tr>
             <th class="id">ID</th>
-            <th class="comment">コメント</th>
+            <th class="title">タイトル</th>
             <th class="state">状態</th>
             <th class="button">-</th>
           </tr>
@@ -36,7 +36,7 @@
             v-bind:class="{done:item.state}"
           >
             <th>{{ item.id }}</th>
-            <td>{{ item.comment }}</td>
+            <td>{{ item.title }}</td>
             <td class="state">
               <!-- ★STEP10 状態変更ボタン -->
               <button v-on:click="doChangeState(item)">
@@ -54,12 +54,7 @@
 
       <!-- ★STEP6 -->
       <h2>新しい作業の追加</h2>
-      <form class="add-form" v-on:submit.prevent="doAdd">
-        <!-- コメント入力フォーム -->
-        コメント <input type="text" ref="comment" />
-        <!-- 追加ボタンのモック -->
-        <button type="submit">追加</button>
-      </form>
+      <title-form></title-form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

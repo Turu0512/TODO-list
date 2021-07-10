@@ -15,11 +15,42 @@ var todoStorage = {
   }
 }
 // ↑　ローカルストレージの式
+Vue.component('title-form',{
+  methods: {
+    // ToDo 追加の処理
+doAdd: function(event,value){
+  // ref で名前を付けておいた要素を参照
+  var title =this.$refs.title
+   // 入力がなければ何もしないで return
+  if(!title.value.length){
+    return
+  }
+  // { 新しいID, コメント, 作業状態 }
+  // というオブジェクトを現在の todos リストへ push
+  // 作業状態「state」はデフォルト「作業中=0」で作成
+  this.todos.push({
+    id:todoStorage.uid++,
+    title:title.value,
+    state:0
+  })
+   // フォーム要素を空にする
+  title.value = ''
+  
+},
+  },
+  template:
+  '<div><form class="add-form" v-on:submit.prevent="doAdd">タイトル <input type="text" ref="title" /><button type="submit">追加</button></form><div>'
+  
+  // タイトル入力フォーム
+  
+  // 追加ボタンのモック
+  
+})
 
 new Vue({
   el:'#app',
   data: {
-    todos:[],
+    
     current:-1,
     options:[
     { value:-1, label:'すべて'}, 
@@ -65,26 +96,7 @@ new Vue({
   },
 
   methods: {
-     // ToDo 追加の処理
-    doAdd: function(event,value){
-      // ref で名前を付けておいた要素を参照
-      var comment =this.$refs.comment
-       // 入力がなければ何もしないで return
-      if(!comment.value.length){
-        return
-      }
-      // { 新しいID, コメント, 作業状態 }
-      // というオブジェクトを現在の todos リストへ push
-      // 作業状態「state」はデフォルト「作業中=0」で作成
-      this.todos.push({
-        id:todoStorage.uid++,
-        comment:comment.value,
-        state:0
-      })
-       // フォーム要素を空にする
-      comment.value = ''
-      
-    },
+    
     // 状態変更の処理
     doChangeState: function(item){
       item.state = !item.state ? 1:0
@@ -95,4 +107,6 @@ new Vue({
       this.todos.splice(index,1)
     }
   },
+  
 })
+
